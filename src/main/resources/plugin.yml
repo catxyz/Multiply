@@ -1,0 +1,9 @@
+name: Drops
+main: me.catxyz.drops.Drops
+version: 0.1
+api-version: 1.18
+authors: [catxyz, mavxyz]
+commands:
+  multiplier:
+    description: Multiplier command to set block drop multipliers.
+    usage: /<command> <number> <item_id>
