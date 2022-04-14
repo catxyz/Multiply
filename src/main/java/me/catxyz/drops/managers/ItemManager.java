@@ -62,8 +62,9 @@ public class ItemManager {
     }
 
     public boolean isLimitExceeded(Player player, int multiplier) {
-        if (multiplier <= 0 || multiplier > 127) {
-            player.sendMessage(Text.format("&cMultiplier cannot be 0 or less, or greater than 127."));
+        int maxMultiplier = 5120;
+        if (multiplier <= 0 || multiplier > maxMultiplier) {
+            player.sendMessage(Text.format("&cMultiplier cannot be 0 or less, or greater than " + maxMultiplier + "."));
             return true;
         }
         return false;

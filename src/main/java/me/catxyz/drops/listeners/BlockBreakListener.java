@@ -1,6 +1,5 @@
 package me.catxyz.drops.listeners;
 
-import me.catxyz.drops.Drops;
 import me.catxyz.drops.managers.ItemManager;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -8,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.logging.Level;
 
 public record BlockBreakListener(ItemManager itemManager) implements Listener {
 
@@ -26,14 +23,12 @@ public record BlockBreakListener(ItemManager itemManager) implements Listener {
         World world = block.getWorld();
         itemManager.getItems().forEach((material, multiplier) -> {
             if (material == block.getType()) {
-                try {
+                if (multiplier > 64) {
+                    for (int i = 0; i < multiplier; i++) {
+                        world.dropItemNaturally(block.getLocation(), new ItemStack(material));
+                    }
+                } else {
                     world.dropItemNaturally(block.getLocation(), new ItemStack(material, multiplier));
-                } catch (Exception e) {
-                    Drops.getInstance().getLogger().log(
-                            Level.SEVERE,
-                            "Something went wrong! (message: " + e.getMessage() + ", runtime class: " + e.getClass() + ")"
-                    );
-                    e.printStackTrace();
                 }
             }
         });
