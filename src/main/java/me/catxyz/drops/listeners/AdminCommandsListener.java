@@ -21,7 +21,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
         String command = "/multiplier ";
         if (message.startsWith(command)) {
             if (player.hasPermission("drops.multiplier")) {
-                if (message.startsWith(command + " clear")) {
+                if (message.startsWith(command + "clear")) {
                     Map<Material, Integer> items = Maps.newHashMap(itemManager.getItems());
                     items.forEach((material, multiplier) -> {
                         player.sendMessage(
@@ -31,7 +31,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
                     });
                     event.setCancelled(true);
                 }
-                if (message.startsWith(command + " list")) {
+                if (message.startsWith(command + "list")) {
                     if (!itemManager.getItems().isEmpty()) {
                         player.sendMessage(Text.format("&eItem List:"));
                         itemManager.getItems().forEach((material, multiplier) -> player.sendMessage(
