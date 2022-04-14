@@ -18,7 +18,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        String command = "/multiplier";
+        String command = "/multiplier ";
         if (message.startsWith(command)) {
             if (player.hasPermission("drops.multiplier")) {
                 if (message.startsWith(command + " clear")) {
