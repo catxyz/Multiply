@@ -1,6 +1,6 @@
 # Drops
 Credits:
 
-Original idea -> @mavxyz
+Original idea -> [@mavxyz](https://github.com/mavxyz)
 
-Development -> @catxyz
+Development -> [@catxyz](https://github.com/catxyz)
