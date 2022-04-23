@@ -33,12 +33,16 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
         switch (command) {
             case "/multiplier clear", "/drops:multiplier clear" -> {
                 Map<Material, Integer> items = Maps.newHashMap(itemManager.getItems());
-                items.forEach((material, multiplier) -> {
-                    player.sendMessage(
-                            Text.format("&cCleared multiplier for &6" + material)
-                    );
-                    itemManager.removeItem(material);
-                });
+                if (!items.isEmpty()) {
+                    items.forEach((material, multiplier) -> {
+                        player.sendMessage(
+                                Text.format("&cCleared multiplier for &6" + material)
+                        );
+                        itemManager.removeItem(material);
+                    });
+                } else {
+                    player.sendMessage(Text.format("&cThere is nothing to clear."));
+                }
                 cancellable.setCancelled(true);
             }
             case "/multiplier list", "/drops:multiplier list" -> {
