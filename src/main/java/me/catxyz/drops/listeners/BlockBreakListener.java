@@ -23,7 +23,7 @@ public record BlockBreakListener(ItemManager itemManager) implements Listener {
         World world = block.getWorld();
         itemManager.getItems().forEach((material, multiplier) -> {
             if (material == block.getType()) {
-                if (multiplier > 64) {
+                if (multiplier > 127) {
                     for (int i = 0; i < multiplier; i++) {
                         world.dropItemNaturally(block.getLocation(), new ItemStack(material));
                     }

@@ -1,6 +1,7 @@
 package me.catxyz.drops.listeners;
 
 import com.google.common.collect.Maps;
+import me.catxyz.drops.Drops;
 import me.catxyz.drops.managers.ItemManager;
 import me.catxyz.drops.utils.Text;
 import org.bukkit.Material;
@@ -19,8 +20,8 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        if (message.startsWith("/multiplier ")) {
-            if (player.hasPermission("drops.multiplier")) {
+        if (message.startsWith("/multiplier ") || message.startsWith("/drops:multiplier ")) {
+            if (player.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
                 processCommands(player, message, event);
             } else {
                 player.sendMessage(Text.format("&cCould not modify this."));
@@ -30,7 +31,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
 
     private void processCommands(Player player, String command, Cancellable cancellable) {
         switch (command) {
-            case "/multiplier clear" -> {
+            case "/multiplier clear", "/drops:multiplier clear" -> {
                 Map<Material, Integer> items = Maps.newHashMap(itemManager.getItems());
                 items.forEach((material, multiplier) -> {
                     player.sendMessage(
@@ -40,7 +41,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
                 });
                 cancellable.setCancelled(true);
             }
-            case "/multiplier list" -> {
+            case "/multiplier list", "/drops:multiplier list" -> {
                 if (!itemManager.getItems().isEmpty()) {
                     player.sendMessage(Text.format("&eItem List:"));
                     itemManager.getItems().forEach((material, multiplier) -> player.sendMessage(

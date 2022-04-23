@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Drops extends JavaPlugin {
 
     private static Drops INSTANCE;
+    public static String DEFAULT_PERMISSION_NODE = "drops.multiplier";
     private ItemManager itemManager;
 
     @Override

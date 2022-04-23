@@ -53,12 +53,11 @@ public class ItemManager {
             addItem(material, multiplier);
             player.sendMessage(Text.format("&aDrop multiplier for &b" + material + " &ais now &e" + multiplier + "&a!"));
         } else {
-            if (items.containsKey(material)) {
-                removeItem(material);
-                addItem(material, multiplier);
-                player.sendMessage(Text.format("&aUpdated multiplier for &b" + material + " &ato &e" + multiplier + "&a!"));
-            }
+            removeItem(material);
+            addItem(material, multiplier);
+            player.sendMessage(Text.format("&aUpdated multiplier for &b" + material + " &ato &e" + multiplier + "&a!"));
         }
+
     }
 
     public boolean isLimitExceeded(Player player, int multiplier) {
