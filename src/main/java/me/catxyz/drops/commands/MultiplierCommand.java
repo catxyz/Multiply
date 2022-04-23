@@ -26,7 +26,7 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
             if (player.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
                 if (args.length <= 1) {
                     player.sendMessage(Text.format("&cUsage:"));
-                    player.sendMessage(Text.format("&c/" + command.getName() + " <number> <item_id/all>"));
+                    player.sendMessage(Text.format("&c/" + command.getName() + " <number> <item_id>"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " clear"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " list"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " all <number>"));
