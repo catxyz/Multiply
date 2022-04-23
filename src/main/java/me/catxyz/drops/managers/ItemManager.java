@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class ItemManager {
 
@@ -57,6 +58,25 @@ public class ItemManager {
             addItem(material, multiplier);
             player.sendMessage(Text.format("&aUpdated multiplier for &b" + material + " &ato &e" + multiplier + "&a!"));
         }
+    }
+
+    public void processAddAll(Player player, int multiplier) {
+        Stream.of(Material.values())
+                .filter(Material::isBlock)
+                .forEach(material -> {
+                    if (!isItemPresent(material)) {
+                        addItem(material, multiplier);
+                        player.sendMessage(Text.format(
+                                "&aAdded &b" + material + " &ato the list with a multiplier of &e" + multiplier)
+                        );
+                    } else {
+                        removeItem(material);
+                        addItem(material, multiplier);
+                        player.sendMessage(Text.format(
+                                "&aUpdated &b" + material + " &awith a multiplier of &e" + multiplier)
+                        );
+                    }
+                });
     }
 
     public boolean isLimitExceeded(Player player, int multiplier) {

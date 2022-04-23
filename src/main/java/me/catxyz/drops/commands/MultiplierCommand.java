@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 public record MultiplierCommand(ItemManager itemManager) implements CommandExecutor, TabCompleter {
 
@@ -25,9 +26,17 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
             if (player.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
                 if (args.length <= 1) {
                     player.sendMessage(Text.format("&cUsage:"));
-                    player.sendMessage(Text.format("&c/" + command.getName() + " <number> <item_id>"));
+                    player.sendMessage(Text.format("&c/" + command.getName() + " <number> <item_id/all>"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " clear"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " list"));
+                    player.sendMessage(Text.format("&c/" + command.getName() + " all <number>"));
+                    player.sendMessage(Text.format(
+                            "&c&lWARNING! &cDangerous stuff ahead; &7using 'all' adds every single block to the multiplier list with the given multiplier."
+                    ));
+                    return true;
+                }
+                if (Objects.equals(args[0], "all")) {
+                    itemManager.processAddAll(player, Integer.parseInt(args[1]));
                     return true;
                 }
                 itemManager.processCommand(player, args);
