@@ -67,7 +67,7 @@ public class ItemManager {
                     if (!isItemPresent(material)) {
                         addItem(material, multiplier);
                         player.sendMessage(Text.format(
-                                "&aAdded &b" + material + " &ato the list with a multiplier of &e" + multiplier)
+                                "&aAdded &b" + material + " &awith a multiplier of &e" + multiplier)
                         );
                     } else {
                         removeItem(material);
