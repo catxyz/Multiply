@@ -2,6 +2,7 @@ package me.catxyz.drops.commands;
 
 import me.catxyz.drops.Drops;
 import me.catxyz.drops.managers.ItemManager;
+import me.catxyz.drops.utils.Checks;
 import me.catxyz.drops.utils.Text;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -36,6 +37,10 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
                     return true;
                 }
                 if (Objects.equals(args[0], "all")) {
+                    if (!Checks.isNumber(args[1])) {
+                        player.sendMessage(Text.format("&c" + args[1] + " is not a number."));
+                        return true;
+                    }
                     itemManager.processAddAll(player, Integer.parseInt(args[1]));
                     return true;
                 }
