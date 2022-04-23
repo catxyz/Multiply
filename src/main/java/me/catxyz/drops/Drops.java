@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import me.catxyz.drops.commands.MultiplierCommand;
 import me.catxyz.drops.listeners.AdminCommandsListener;
 import me.catxyz.drops.listeners.BlockBreakListener;
+import me.catxyz.drops.listeners.TNTExplosionListener;
 import me.catxyz.drops.managers.ItemManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,7 @@ public class Drops extends JavaPlugin {
 
         Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(itemManager));
         getServer().getPluginManager().registerEvents(new BlockBreakListener(itemManager), this);
+        getServer().getPluginManager().registerEvents(new TNTExplosionListener(itemManager), this);
         getServer().getPluginManager().registerEvents(new AdminCommandsListener(itemManager), this);
 
         getLogger().info("Drops successfully enabled!");

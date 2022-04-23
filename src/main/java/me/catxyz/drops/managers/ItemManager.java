@@ -57,7 +57,6 @@ public class ItemManager {
             addItem(material, multiplier);
             player.sendMessage(Text.format("&aUpdated multiplier for &b" + material + " &ato &e" + multiplier + "&a!"));
         }
-
     }
 
     public boolean isLimitExceeded(Player player, int multiplier) {
