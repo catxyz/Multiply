@@ -14,7 +14,7 @@ public record BlockBreakListener(ItemManager itemManager) implements Listener {
         Block block = event.getBlock();
 
         if (itemManager().isItemPresent(block.getType())) {
-            Items.dropMultipliedItems(block);
+            Items.dropMultipliedItems(itemManager, block);
         }
     }
 }
