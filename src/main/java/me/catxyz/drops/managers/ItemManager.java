@@ -49,34 +49,28 @@ public class ItemManager {
             player.sendMessage(Text.format("&cItem " + itemId + " is not a block."));
             return;
         }
-
-        if (!isItemPresent(material)) {
-            addItem(material, multiplier);
-            player.sendMessage(Text.format("&aDrop multiplier for &b" + material + " &ais now &e" + multiplier + "&a!"));
-        } else {
-            removeItem(material);
-            addItem(material, multiplier);
-            player.sendMessage(Text.format("&aUpdated multiplier for &b" + material + " &ato &e" + multiplier + "&a!"));
-        }
+        checkAndAdd(player, material, multiplier);
     }
 
     public void processAddAll(Player player, int multiplier) {
         Stream.of(Material.values())
                 .filter(Material::isBlock)
-                .forEach(material -> {
-                    if (!isItemPresent(material)) {
-                        addItem(material, multiplier);
-                        player.sendMessage(Text.format(
-                                "&aAdded &b" + material + " &awith a multiplier of &e" + multiplier)
-                        );
-                    } else {
-                        removeItem(material);
-                        addItem(material, multiplier);
-                        player.sendMessage(Text.format(
-                                "&aUpdated &b" + material + " &awith a multiplier of &e" + multiplier)
-                        );
-                    }
-                });
+                .forEach(material -> checkAndAdd(player, material, multiplier));
+    }
+
+    private void checkAndAdd(Player player, Material material, int multiplier) {
+        if (!isItemPresent(material)) {
+            addItem(material, multiplier);
+            player.sendMessage(Text.format(
+                    "&aAdded &b" + material + " &awith a multiplier of &e" + multiplier
+            ));
+        } else {
+            removeItem(material);
+            addItem(material, multiplier);
+            player.sendMessage(Text.format(
+                    "&aUpdated &b" + material + " &awith a multiplier of &e" + multiplier
+            ));
+        }
     }
 
     public boolean isLimitExceeded(Player player, int multiplier) {
