@@ -26,6 +26,10 @@ public class ItemManager {
         items.remove(material);
     }
 
+    public void replaceItem(Material material, int multiplier) {
+        items.replace(material, multiplier);
+    }
+
     public void processCommand(Player player, String[] args) {
         String itemId = Format.formatItemNamespace(args);
         if (!Checks.isNumber(args[0])) {
@@ -65,8 +69,7 @@ public class ItemManager {
                     "&aAdded &b" + material + " &awith a multiplier of &e" + multiplier
             ));
         } else {
-            removeItem(material);
-            addItem(material, multiplier);
+            replaceItem(material, multiplier);
             player.sendMessage(Text.format(
                     "&aUpdated &b" + material + " &awith a multiplier of &e" + multiplier
             ));

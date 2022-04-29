@@ -32,7 +32,7 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
                     player.sendMessage(Text.format("&c/" + command.getName() + " list"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " all <number>"));
                     player.sendMessage(Text.format(
-                            "&c&lWARNING, &cdangerous stuff ahead. &7Using '&eall&7' adds all blocks to the multiplier list with the given multiplier."
+                            "&c&lWARNING &c- dangerous stuff ahead. &7Using '&eall&7' adds all blocks to the multiplier list with the given multiplier."
                     ));
                     return true;
                 }
