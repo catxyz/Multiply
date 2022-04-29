@@ -2,6 +2,7 @@ package me.catxyz.multiply;
 
 import com.google.common.base.Preconditions;
 import me.catxyz.multiply.commands.MultiplierCommand;
+import me.catxyz.multiply.components.TextComponents;
 import me.catxyz.multiply.listeners.AdminCommandsListener;
 import me.catxyz.multiply.listeners.BlockBreakListener;
 import me.catxyz.multiply.listeners.TNTExplosionListener;
@@ -20,7 +21,7 @@ public class Multiply extends JavaPlugin {
         INSTANCE = this;
         this.itemManager = new ItemManager();
 
-        Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(itemManager));
+        Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(itemManager, new TextComponents()));
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new BlockBreakListener(itemManager), this);

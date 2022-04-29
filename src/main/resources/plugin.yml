@@ -6,4 +6,4 @@ authors: [catxyz, mavxyz]
 commands:
   multiplier:
     description: Multiplier command to set block drop multipliers.
-    usage: /<command> <number> <item_id>
+    usage: /<command> <number> <block_id>
