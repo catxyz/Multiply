@@ -28,9 +28,9 @@ public record MultiplierCommand(ItemManager itemManager,
         if (command.getName().equalsIgnoreCase("multiplier")) {
             if (player.hasPermission(Multiply.DEFAULT_PERMISSION_NODE)) {
                 if (args.length <= 1) {
-                    Player.Spigot spPlayer = player.spigot();
-
                     player.sendMessage(Text.format("&7Usage:"));
+
+                    Player.Spigot spPlayer = player.spigot();
                     spPlayer.sendMessage(textComponents.getMainComponent());
                     spPlayer.sendMessage(textComponents.getClearComponent());
                     spPlayer.sendMessage(textComponents.getListComponent());
