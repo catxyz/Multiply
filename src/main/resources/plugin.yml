@@ -1,5 +1,5 @@
-name: Drops
-main: me.catxyz.drops.Drops
+name: Multiply
+main: me.catxyz.multiply.Multiply
 version: 0.1
 api-version: 1.18
 authors: [catxyz, mavxyz]

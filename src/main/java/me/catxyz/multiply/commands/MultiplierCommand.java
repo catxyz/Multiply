@@ -1,9 +1,9 @@
-package me.catxyz.drops.commands;
+package me.catxyz.multiply.commands;
 
-import me.catxyz.drops.Drops;
-import me.catxyz.drops.managers.ItemManager;
-import me.catxyz.drops.utils.Checks;
-import me.catxyz.drops.utils.Text;
+import me.catxyz.multiply.Multiply;
+import me.catxyz.multiply.managers.ItemManager;
+import me.catxyz.multiply.utils.Checks;
+import me.catxyz.multiply.utils.Text;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,17 +19,17 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            Drops.getInstance().getLogger().info("Command not supported here.");
+            Multiply.getInstance().getLogger().info("Command not supported here.");
             return true;
         }
 
         if (command.getName().equalsIgnoreCase("multiplier")) {
-            if (player.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
+            if (player.hasPermission(Multiply.DEFAULT_PERMISSION_NODE)) {
                 if (args.length <= 1) {
-                    player.sendMessage(Text.format("&cUsage:"));
-                    player.sendMessage(Text.format("&c/" + command.getName() + " <number> <item_id>"));
-                    player.sendMessage(Text.format("&c/" + command.getName() + " clear"));
-                    player.sendMessage(Text.format("&c/" + command.getName() + " list"));
+                    player.sendMessage(Text.format("&7Usage:"));
+                    player.sendMessage(Text.format("&e/" + command.getName() + " <number> <item_id>"));
+                    player.sendMessage(Text.format("&e/" + command.getName() + " clear"));
+                    player.sendMessage(Text.format("&e/" + command.getName() + " list"));
                     player.sendMessage(Text.format("&c/" + command.getName() + " all <number>"));
                     player.sendMessage(Text.format(
                             "&c&lWARNING &c- dangerous stuff ahead. &7Using '&eall&7' adds all blocks to the multiplier list with the given multiplier."
@@ -55,7 +55,7 @@ public record MultiplierCommand(ItemManager itemManager) implements CommandExecu
 
     @Override
     public @NotNull List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!sender.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
+        if (!sender.hasPermission(Multiply.DEFAULT_PERMISSION_NODE)) {
             return List.of();
         }
         return List.of("clear", "list");

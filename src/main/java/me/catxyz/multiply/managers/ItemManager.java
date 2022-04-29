@@ -1,9 +1,9 @@
-package me.catxyz.drops.managers;
+package me.catxyz.multiply.managers;
 
 import com.google.common.collect.Maps;
-import me.catxyz.drops.utils.Checks;
-import me.catxyz.drops.utils.Format;
-import me.catxyz.drops.utils.Text;
+import me.catxyz.multiply.utils.Checks;
+import me.catxyz.multiply.utils.Format;
+import me.catxyz.multiply.utils.Text;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -63,15 +63,17 @@ public class ItemManager {
     }
 
     private void checkAndAdd(Player player, Material material, int multiplier) {
+        String formattedNumber = Format.formatNumber(multiplier);
+
         if (!isItemPresent(material)) {
             addItem(material, multiplier);
             player.sendMessage(Text.format(
-                    "&aAdded &b" + material + " &awith a multiplier of &e" + multiplier
+                    "&aAdded &b" + material + " &awith a multiplier of &e" + formattedNumber
             ));
         } else {
             replaceItem(material, multiplier);
             player.sendMessage(Text.format(
-                    "&aUpdated &b" + material + " &awith a multiplier of &e" + multiplier
+                    "&aUpdated &b" + material + " &awith a multiplier of &e" + formattedNumber
             ));
         }
     }

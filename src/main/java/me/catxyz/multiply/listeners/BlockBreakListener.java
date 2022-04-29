@@ -1,7 +1,7 @@
-package me.catxyz.drops.listeners;
+package me.catxyz.multiply.listeners;
 
-import me.catxyz.drops.managers.ItemManager;
-import me.catxyz.drops.utils.Items;
+import me.catxyz.multiply.managers.ItemManager;
+import me.catxyz.multiply.utils.ItemMultiplier;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +14,7 @@ public record BlockBreakListener(ItemManager itemManager) implements Listener {
         Block block = event.getBlock();
 
         if (itemManager().isItemPresent(block.getType())) {
-            Items.dropMultipliedItems(itemManager, block);
+            ItemMultiplier.dropItemsAt(itemManager, block);
         }
     }
 }

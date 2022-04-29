@@ -1,13 +1,13 @@
-package me.catxyz.drops.utils;
+package me.catxyz.multiply.utils;
 
-import me.catxyz.drops.managers.ItemManager;
+import me.catxyz.multiply.managers.ItemManager;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
-public class Items {
+public class ItemMultiplier {
 
-    public static void dropMultipliedItems(ItemManager itemManager, Block block) {
+    public static void dropItemsAt(ItemManager itemManager, Block block) {
         World world = block.getWorld();
         itemManager.getItems().forEach((material, multiplier) -> {
             if (material == block.getType()) {

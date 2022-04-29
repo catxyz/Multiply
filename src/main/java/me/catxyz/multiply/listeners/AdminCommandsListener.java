@@ -1,9 +1,10 @@
-package me.catxyz.drops.listeners;
+package me.catxyz.multiply.listeners;
 
 import com.google.common.collect.Maps;
-import me.catxyz.drops.Drops;
-import me.catxyz.drops.managers.ItemManager;
-import me.catxyz.drops.utils.Text;
+import me.catxyz.multiply.Multiply;
+import me.catxyz.multiply.managers.ItemManager;
+import me.catxyz.multiply.utils.Format;
+import me.catxyz.multiply.utils.Text;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -20,8 +21,8 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        if (message.startsWith("/multiplier ") || message.startsWith("/drops:multiplier ")) {
-            if (player.hasPermission(Drops.DEFAULT_PERMISSION_NODE)) {
+        if (message.startsWith("/multiplier ")) {
+            if (player.hasPermission(Multiply.DEFAULT_PERMISSION_NODE)) {
                 processCommands(player, message, event);
             } else {
                 player.sendMessage(Text.format("&cCould not modify this."));
@@ -31,7 +32,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
 
     private void processCommands(Player player, String command, Cancellable cancellable) {
         switch (command) {
-            case "/multiplier clear", "/drops:multiplier clear" -> {
+            case "/multiplier clear" -> {
                 Map<Material, Integer> items = Maps.newHashMap(itemManager.getItems());
                 if (!items.isEmpty()) {
                     items.forEach((material, multiplier) -> {
@@ -45,11 +46,11 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
                 }
                 cancellable.setCancelled(true);
             }
-            case "/multiplier list", "/drops:multiplier list" -> {
+            case "/multiplier list" -> {
                 if (!itemManager.getItems().isEmpty()) {
                     player.sendMessage(Text.format("&eItem List:"));
                     itemManager.getItems().forEach((material, multiplier) -> player.sendMessage(
-                            Text.format(" &8• &6" + material + " &8- &a" + multiplier + "&bx")
+                            Text.format(" &8• &6" + material + " &7- &a" + Format.formatNumber(multiplier) + "&bx")
                     ));
                 } else {
                     player.sendMessage(Text.format("&cItem list is empty."));

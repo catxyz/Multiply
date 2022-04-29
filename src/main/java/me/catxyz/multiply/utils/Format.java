@@ -1,4 +1,6 @@
-package me.catxyz.drops.utils;
+package me.catxyz.multiply.utils;
+
+import java.text.NumberFormat;
 
 public class Format {
 
@@ -11,5 +13,9 @@ public class Format {
             builder.append(args[i]);
         }
         return builder.toString().toUpperCase();
+    }
+
+    public static String formatNumber(long number) {
+        return NumberFormat.getInstance().format(number);
     }
 }

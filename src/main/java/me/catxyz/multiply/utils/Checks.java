@@ -1,4 +1,4 @@
-package me.catxyz.drops.utils;
+package me.catxyz.multiply.utils;
 
 public class Checks {
 

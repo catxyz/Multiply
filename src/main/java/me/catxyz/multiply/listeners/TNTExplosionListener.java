@@ -1,7 +1,7 @@
-package me.catxyz.drops.listeners;
+package me.catxyz.multiply.listeners;
 
-import me.catxyz.drops.managers.ItemManager;
-import me.catxyz.drops.utils.Items;
+import me.catxyz.multiply.managers.ItemManager;
+import me.catxyz.multiply.utils.ItemMultiplier;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -12,7 +12,7 @@ public record TNTExplosionListener(ItemManager itemManager) implements Listener 
     public void onEntityExplode(EntityExplodeEvent event) {
         event.blockList().forEach(block -> {
             if (itemManager.isItemPresent(block.getType())) {
-                Items.dropMultipliedItems(itemManager, block);
+                ItemMultiplier.dropItemsAt(itemManager, block);
             }
         });
     }

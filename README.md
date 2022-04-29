@@ -1,4 +1,4 @@
-# Drops
+# Multiply
 Credits:
 
 Original idea -> [@mavxyz](https://github.com/mavxyz)
