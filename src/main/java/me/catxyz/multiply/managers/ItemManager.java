@@ -68,12 +68,12 @@ public class ItemManager {
         if (!isItemPresent(material)) {
             addItem(material, multiplier);
             player.sendMessage(Text.format(
-                    "&aAdded &b" + material + " &awith a multiplier of &e" + formattedNumber
+                    "&aAdded &b" + material + " &awith multiplier of &e" + formattedNumber
             ));
         } else {
             replaceItem(material, multiplier);
             player.sendMessage(Text.format(
-                    "&aUpdated &b" + material + " &awith a multiplier of &e" + formattedNumber
+                    "&aUpdated &b" + material + " &awith multiplier of &e" + formattedNumber
             ));
         }
     }
