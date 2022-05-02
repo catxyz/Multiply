@@ -1,5 +1,5 @@
 # Multiply
-Credits:
+Credits ->
 
 Development -> [@catxyz](https://github.com/catxyz)
 
