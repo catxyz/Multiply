@@ -37,7 +37,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
                 if (!items.isEmpty()) {
                     items.forEach((material, multiplier) -> {
                         player.sendMessage(
-                                Text.format("&cCleared multiplier for &6" + material)
+                                Text.format("&cCleared multiplier for &e" + material)
                         );
                         itemManager.removeItem(material);
                     });
@@ -48,12 +48,12 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
             }
             case "/multiplier list" -> {
                 if (!itemManager.getItems().isEmpty()) {
-                    player.sendMessage(Text.format("&eItem List:"));
+                    player.sendMessage(Text.format("&eBlock List:"));
                     itemManager.getItems().forEach((material, multiplier) -> player.sendMessage(
                             Text.format(" &8• &6" + material + " &7- &a" + Format.formatNumber(multiplier) + "&bx")
                     ));
                 } else {
-                    player.sendMessage(Text.format("&cItem list is empty."));
+                    player.sendMessage(Text.format("&cBlock list is empty."));
                 }
                 cancellable.setCancelled(true);
             }

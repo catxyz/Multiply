@@ -35,6 +35,8 @@ public record MultiplierCommand(ItemManager itemManager,
                     spPlayer.sendMessage(textComponents.getClearComponent());
                     spPlayer.sendMessage(textComponents.getListComponent());
                     spPlayer.sendMessage(textComponents.getAllComponent());
+
+                    player.sendMessage(Text.format("&d&lTip! &eHover over commands to get more info about them!"));
                     return true;
                 }
                 if (Objects.equals(args[0], "all")) {
