@@ -8,7 +8,7 @@ import net.md_5.bungee.api.chat.hover.content.Text;
 
 public class TextComponents {
 
-    protected static final ChatColor COMMAND_COLOR_SCHEME = ChatColor.GREEN;
+    public static final ChatColor COMMAND_COLOR_SCHEME = ChatColor.GREEN;
 
     public BaseComponent getMainComponent() {
         String blockNamespace = "<block_id>";
