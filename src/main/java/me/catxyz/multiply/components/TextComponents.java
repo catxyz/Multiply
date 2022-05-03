@@ -11,15 +11,15 @@ public class TextComponents {
     protected static final ChatColor COMMAND_COLOR_SCHEME = ChatColor.GREEN;
 
     public BaseComponent getMainComponent() {
-        String itemNamespace = "<block_id>";
+        String blockNamespace = "<block_id>";
 
-        TextComponent command = new TextComponent("/multiplier <number> " + itemNamespace);
+        TextComponent command = new TextComponent("/multiplier <number> " + blockNamespace);
         command.setColor(COMMAND_COLOR_SCHEME);
         command.setHoverEvent(new HoverEvent(
                         HoverEvent.Action.SHOW_TEXT,
                         new Text(ChatColor.GRAY + "Main command; use this to add multipliers for specific blocks!\n" +
                                 "<number> - multiplier number\n" +
-                                itemNamespace + " - block id (e.g. stone, grass_block etc.)")
+                                blockNamespace + " - block id (e.g. stone, grass_block etc.)")
                 )
         );
 
