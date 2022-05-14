@@ -1,5 +1,6 @@
 package me.catxyz.multiply.listeners.fallingblock;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import me.catxyz.multiply.Multiply;
 import org.bukkit.Bukkit;
@@ -30,7 +31,7 @@ public class FallingBlockHandler {
     }
 
     public void startPersistenceCleanup(boolean debug) {
-        Bukkit.getScheduler().runTaskTimer(Multiply.getInstance(), () -> Lists.newArrayList(persistence).forEach(location -> {
+        Bukkit.getScheduler().runTaskTimer(Multiply.getInstance(), () -> ImmutableList.copyOf(persistence).forEach(location -> {
             Block block = Objects.requireNonNull(Bukkit.getWorld("world")).getBlockAt(location);
             if (block.getType() == Material.AIR) {
                 drop(location);
