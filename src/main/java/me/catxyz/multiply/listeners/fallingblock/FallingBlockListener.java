@@ -19,7 +19,7 @@ public class FallingBlockListener implements Listener {
     }
 
     @EventHandler
-    public void onEntityDamageByBlock(EntityChangeBlockEvent event) {
+    public void onBlockFall(EntityChangeBlockEvent event) {
         if (event.getEntityType() == EntityType.FALLING_BLOCK) {
             FallingBlock fallingBlock = ((FallingBlock) event.getEntity());
             if (itemManager.isItemPresent(fallingBlock.getBlockData().getMaterial())) {
