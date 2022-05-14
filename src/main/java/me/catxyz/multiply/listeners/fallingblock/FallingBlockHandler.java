@@ -16,7 +16,7 @@ public class FallingBlockHandler {
 
     public FallingBlockHandler() {
         this.persistence = Lists.newArrayList();
-        startPersistenceCleanup(true);
+        startPersistenceCleanup(false);
     }
 
     public void add(Location location) {
