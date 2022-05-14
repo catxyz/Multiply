@@ -1,5 +1,6 @@
 package me.catxyz.multiply.commands;
 
+import com.google.common.collect.ImmutableList;
 import me.catxyz.multiply.Multiply;
 import me.catxyz.multiply.components.TextComponents;
 import me.catxyz.multiply.managers.ItemManager;
@@ -59,8 +60,8 @@ public record MultiplierCommand(ItemManager itemManager,
     @Override
     public @NotNull List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission(Multiply.DEFAULT_PERMISSION_NODE)) {
-            return List.of();
+            return ImmutableList.of();
         }
-        return List.of("clear", "list");
+        return ImmutableList.of("clear", "list");
     }
 }

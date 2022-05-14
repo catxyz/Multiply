@@ -6,6 +6,7 @@ import me.catxyz.multiply.components.TextComponents;
 import me.catxyz.multiply.listeners.AdminCommandsListener;
 import me.catxyz.multiply.listeners.BlockBreakListener;
 import me.catxyz.multiply.listeners.TNTExplosionListener;
+import me.catxyz.multiply.listeners.fallingblock.FallingBlockListener;
 import me.catxyz.multiply.managers.ItemManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,11 +22,15 @@ public class Multiply extends JavaPlugin {
         INSTANCE = this;
         this.itemManager = new ItemManager();
 
-        Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(itemManager, new TextComponents()));
+        Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(
+                itemManager,
+                new TextComponents())
+        );
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new BlockBreakListener(itemManager), this);
         pluginManager.registerEvents(new TNTExplosionListener(itemManager), this);
+        pluginManager.registerEvents(new FallingBlockListener(itemManager), this);
         pluginManager.registerEvents(new AdminCommandsListener(itemManager), this);
 
         getLogger().info(getName() + " successfully enabled!");

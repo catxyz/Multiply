@@ -12,7 +12,7 @@ public record TNTExplosionListener(ItemManager itemManager) implements Listener 
     public void onEntityExplode(EntityExplodeEvent event) {
         event.blockList().forEach(block -> {
             if (itemManager.isItemPresent(block.getType())) {
-                ItemMultiplier.dropItemsAt(itemManager, block);
+                ItemMultiplier.dropItemsAt(itemManager, block.getLocation());
             }
         });
     }

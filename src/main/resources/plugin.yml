@@ -2,7 +2,7 @@ name: Multiply
 main: me.catxyz.multiply.Multiply
 version: 0.1
 api-version: 1.18
-authors: [catxyz, mavxyz]
+authors: [ catxyz, mavxyz ]
 commands:
   multiplier:
     description: Multiplier command to set block drop multipliers.
