@@ -1,6 +1,5 @@
 package me.catxyz.multiply.listeners;
 
-import com.google.common.collect.Maps;
 import me.catxyz.multiply.Multiply;
 import me.catxyz.multiply.managers.ItemManager;
 import me.catxyz.multiply.utils.Format;
@@ -33,7 +32,7 @@ public record AdminCommandsListener(ItemManager itemManager) implements Listener
     private void processCommands(Player player, String command, Cancellable cancellable) {
         switch (command) {
             case "/multiplier clear" -> {
-                Map<Material, Integer> items = Maps.newHashMap(itemManager.getItems());
+                Map<Material, Integer> items = Map.copyOf(itemManager.getItems());
                 if (!items.isEmpty()) {
                     items.forEach((material, multiplier) -> {
                         player.sendMessage(
