@@ -24,8 +24,8 @@ public class Multiply extends JavaPlugin {
 
         Preconditions.checkNotNull(getCommand("multiplier")).setExecutor(new MultiplierCommand(
                 itemManager,
-                new TextComponents())
-        );
+                new TextComponents()
+        ));
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new BlockBreakListener(itemManager), this);
